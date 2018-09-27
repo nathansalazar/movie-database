@@ -7,49 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="vendors/angular-material.min.css">
     <script src="vendors/angular.js"></script>
+    <script src="vendors/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
     <script src="vendors/angular-material.min.js"></script>
     <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/home.controller.js"></script>
+    <script src="scripts/controllers/api.controller.js"></script>
+    <script src="scripts/controllers/genre.controller.js"></script>
 
     <title>Movie Database</title>
 </head>
-
-<body ng-app="MovieApp" ng-controller="MovieController as vm">
-    <h1>Movie Database</h1>
-
-    <form ng-submit="vm.addMovie(vm.movieToAdd)">
-        <h3>Add Movie</h3>
-        <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
-        <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre">
-            <option value="">Genre</option>
-        </select>
-        <label>Release Date
-            <input type="date" value="MM/YYYY" min="1900-01-01" max="2019-01-01" ng-model="vm.movieToAdd.date" /></label>
-        <!-- this needs to be fixed later -->
-        <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
-        <input type="text" placeholder="Image URL" ng-model="vm.movieToAdd.image">
-        <input type="submit" value="Submit">
-    </form>
-
-    <div class="md-padding" layout="row" layout-wrap>
-        <md-content flex="33">
-            <md-card style="width:300px" ng-repeat="movie in vm.movies">
-                <md-card-title>
-                    <md-card-title-text>
-                            {{movie.title}}
-                    </md-card-title-text>
-                    </mat-card-title>
-                    <div>
-                        <img ng-src="{{movie.image}}" style="width:100px">
-                    </div>
-                    <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
-                            Delete
-                        </md-button>
-            </md-card>
-        </md-content>
+<!-- ng-controller="MovieController as vm" -->
+<body ng-app="MovieApp" >
+    
+    <div>
+            <a href="#!/">Home</a>
+        <a href="#!/search">Search</a>
+        <a href="#!/genres">Genres</a>
     </div>
+
+    <ng-view></ng-view>
 <!-- 
     <div>
             <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
