@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="vendors/angular.js"></script>
     <link rel="stylesheet" href="vendors/angular-material.min.css">
+    <script src="vendors/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script> -->
     <script src="vendors/angular-material.min.js"></script>
     <script src="scripts/client.js"></script>
 
@@ -41,10 +44,13 @@
                     <div>
                         <img ng-src="{{movie.image}}" style="width:100px">
                     </div>
+                    <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
+                            Delete
+                        </md-button>
             </md-card>
         </md-content>
     </div>
-
+<!-- 
     <div>
             <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
                     <md-card-title>
@@ -69,7 +75,19 @@
                       </md-card-actions>
                     </md-card-content>
                   </md-card>
-    </div>
+    </div> -->
+
+
+
+
+
+    <!-- <script src="vendors/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+    <script src="vendors/angular-material.min.js"></script>
+    <script src="scripts/client.js"></script> -->
+
 </body>
 
 </html>
