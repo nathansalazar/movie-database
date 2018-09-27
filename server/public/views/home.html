@@ -2,34 +2,43 @@
 
 <h1>Movie Database</h1>
 
-    <form ng-submit="vm.addMovie(vm.movieToAdd)">
-        <h3>Add Movie</h3>
+<form ng-submit="vm.addMovie(vm.movieToAdd)">
+    <h3>Add Movie</h3>
+    <md-input-container>
         <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
-        <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre">
-            <option value="">Genre</option>
-        </select>
-        <label>Release Date
-            <input type="date" value="yyyy-MM-dd" min="1900-01-01" max="2019-01-01" ng-model="vm.movieToAdd.date" /></label>
-        <!-- this needs to be fixed later -->
+    </md-input-container>
+    <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre">
+        <option value="">Genre</option>
+    </select>
+    <label>Release Date
+        <md-input-container>
+            <input type="date" value="yyyy-MM-dd" min="1900-01-01" max="2019-01-01" ng-model="vm.movieToAdd.release_date" />
+        </md-input-container></label>
+        <md-date-picker placeholder="Date"></md-date-picker>
+    <!-- this needs to be fixed later -->
+    <md-input-container>
         <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
+    </md-input-container>
+    <md-input-container>
         <input type="text" placeholder="Image URL" ng-model="vm.movieToAdd.image">
-        <input type="submit" value="Submit">
-    </form>
+    </md-input-container>
+    <input type="submit" value="Submit">
+</form>
 
-    <div class="md-padding" layout="row" layout-wrap>
-        <md-content flex="33">
-            <md-card style="width:300px" ng-repeat="movie in vm.movies">
-                <md-card-title>
-                    <md-card-title-text>
-                            {{movie.title}}
-                    </md-card-title-text>
-                    </mat-card-title>
-                    <div>
-                        <img ng-src="{{movie.image}}" style="width:100px">
-                    </div>
-                    <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
-                            Delete
-                        </md-button>
-            </md-card>
-        </md-content>
-    </div>
+<div class="md-padding" layout="row" layout-wrap>
+    <md-content flex="33">
+        <md-card style="width:300px" ng-repeat="movie in vm.movies">
+            <md-card-title>
+                <md-card-title-text>
+                    {{movie.title}}
+                </md-card-title-text>
+                </mat-card-title>
+                <div>
+                    <img ng-src="{{movie.image}}" style="width:100px">
+                </div>
+                <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
+                    Delete
+                </md-button>
+        </md-card>
+    </md-content>
+</div>

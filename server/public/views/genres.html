@@ -15,6 +15,7 @@
             <th>ID</th>
             <th>Genre</th>
             <th>Number in Database</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,14 @@
             <td>{{genre.id}}</td>
             <td>{{genre.name}}</td>
             <td style="text-align:right">{{genre.count}}</td>
+            <td>
+                <md-button class="md-raised">
+                    Delete Genre
+                </md-button>
+                <md-button class="md-raised" ng-click="vm.seeAllInGenre(genre)">
+                        See All in Genre
+                    </md-button>
+            </td>
         </tr>
     </tbody>
 </table>

@@ -8,6 +8,18 @@ movieApp.controller('MovieController',['$http',function($http){
     },{
         text: 'Adventure',
         id: 2
+    },{
+        text: 'Animation',
+        id: 3
+    },{
+        text: 'Comedy',
+        id: 4
+    },{
+        text: 'Crime',
+        id: 5
+    },{
+        text: 'Documentary',
+        id: 6
     }];
     vm.addMovie = function(movieToAdd){
         console.log(movieToAdd);

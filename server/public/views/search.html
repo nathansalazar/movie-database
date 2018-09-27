@@ -10,18 +10,23 @@
 </form>
 
 <div class="md-padding" layout="row" layout-wrap>
-        <md-content flex="33">
-            <md-card style="width:300px" ng-repeat="movie in vm.searchResults">
+        <md-content>
+            <md-card style="width:400px" ng-repeat="movie in vm.searchResults">
+            <div layout="column">
                 <md-card-title>
                     <md-card-title-text>
                             {{movie.title}}
                     </md-card-title-text>
                     </mat-card-title>
+                    <md-card-content>
+                        {{movie.overview}}
+                    </md-card-content>
+                </div>
                     <div>
                         <img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="width:100px">
                     </div>
-                    <md-button class="md-primary md-raised" style="height:50px">
-                            Useless Button
+                    <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.addMovie(movie)">
+                            Add to Database
                         </md-button>
             </md-card>
         </md-content>

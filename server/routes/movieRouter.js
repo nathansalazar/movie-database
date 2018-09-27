@@ -10,7 +10,7 @@ router.post('/',(req,res)=>{
     pool.query(`INSERT INTO "movies"
         ("title", "genre_id", "release_date", "run_time", "image")
         VALUES ($1, $2, $3, $4, $5);`,
-        [req.body.title, req.body.genre, req.body.date, req.body.runtime, req.body.image]
+        [req.body.title, req.body.genre_id, req.body.release_date, req.body.runtime, req.body.image]
     ).then((results)=>{
         res.send(results.rows);
     }).catch((error)=>{

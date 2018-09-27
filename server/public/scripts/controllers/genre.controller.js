@@ -21,5 +21,9 @@ movieApp.controller('genreController',['$http',function($http){
             console.log('Error in GET:', error);
         })
     }
+
+    vm.seeAllInGenre = function(genre){
+        //maybe do separate router 
+    }
     vm.getGenres();
 }])
