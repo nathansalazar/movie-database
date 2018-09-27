@@ -10,8 +10,14 @@ app.controller('MovieController',['$http',function($http){
         text: 'Adventure',
         id: 2
     }];
-    vm.movieToAdd={};
+    // vm.movieToAdd={};
     vm.addMovie = function(movieToAdd){
         console.log(movieToAdd);
+        $http.post('/movies',movieToAdd).then(function(response){
+            console.log('response is:',response);
+        }).catch(function(error){
+            console.log('Error in POST:', error);
+        })
+        vm.movieToAdd={};
     }
 }])

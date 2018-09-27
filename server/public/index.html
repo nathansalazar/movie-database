@@ -16,14 +16,14 @@
 
 <form ng-submit="vm.addMovie(vm.movieToAdd)">
     <h3>Add Movie</h3>
-    <input type="text" placeholder="Title">
+    <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
     <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre">
         <option value="">Genre</option>
     </select>
     <label>Release Date
             <input type="date"
-            value="MM/YYYY"
-            min="1900-01" max="2019-01-01" /></label>
+            value="MM/YYYY" min="1900-01-01" max="2019-01-01" 
+            ng-model="vm.movieToAdd.date"/></label>
             <!-- this needs to be fixed later -->
     <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
     <input type="submit" value="Submit">
