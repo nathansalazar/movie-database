@@ -26,6 +26,11 @@ ADD "image" VARCHAR(255);
 
 
 
+--SQL query to get number of movies in each genre
+SELECT "genre"."id", "name", COUNT("genre_id") FROM "movies"
+JOIN "genre" ON "genre"."id"="movies"."genre_id"
+GROUP BY "movies"."genre_id", "name", "genre"."id";
+
 
 
 --this is my attempt at inserting JSON into a SQL table, and getting information back

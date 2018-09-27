@@ -1,3 +1,28 @@
 <h1>Search Page</h1>
 
 {{vm.message}}
+
+<h2>Search for a movie by title</h2>
+
+<form ng-submit="vm.searchForMovie(vm.search)">
+    <input type="text" placeholder="Search" ng-model="vm.search.title">
+    <input type="submit" value="Search">
+</form>
+
+<div class="md-padding" layout="row" layout-wrap>
+        <md-content flex="33">
+            <md-card style="width:300px" ng-repeat="movie in vm.searchResults">
+                <md-card-title>
+                    <md-card-title-text>
+                            {{movie.title}}
+                    </md-card-title-text>
+                    </mat-card-title>
+                    <div>
+                        <img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="width:100px">
+                    </div>
+                    <md-button class="md-primary md-raised" style="height:50px">
+                            Useless Button
+                        </md-button>
+            </md-card>
+        </md-content>
+    </div>

@@ -21,7 +21,9 @@ router.post('/',(req,res)=>{
 
 router.get('/',(req,res)=>{
     console.log('In server GETting genres');
-    pool.query(`SELECT * FROM "genre";`).then((results)=>{
+    pool.query(`SELECT "genre"."id", "name", COUNT("genre_id") FROM "movies"
+    JOIN "genre" ON "genre"."id"="movies"."genre_id"
+    GROUP BY "movies"."genre_id", "name", "genre"."id";;`).then((results)=>{
         res.send(results.rows);
     }).catch((error)=>{
         console.log('Error in GET:',error);
