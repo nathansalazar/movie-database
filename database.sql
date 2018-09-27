@@ -21,6 +21,9 @@ INSERT INTO "genre"
 ("name", "api_id")
 VALUES ('Action', 28);
 
+ALTER TABLE "movies"
+ADD "image" VARCHAR(255);
+
 
 
 

@@ -26,8 +26,12 @@
             ng-model="vm.movieToAdd.date"/></label>
             <!-- this needs to be fixed later -->
     <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
+    <input type="text" placeholder="Image URL" ng-model="vm.movieToAdd.image">
     <input type="submit" value="Submit">
 </form>
-    
+    <mat-card ng-repeat="movie in vm.movies">
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <img mat-card-image ng-src="{{movie.image}}" style="width:100px">
+    </mat-card>
 </body>
 </html>

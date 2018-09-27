@@ -3,6 +3,7 @@ const app = angular.module('MovieApp',[]);
 app.controller('MovieController',['$http',function($http){
     let vm = this;
     vm.message="AngularJS is working.";
+    vm.movies=[];
     vm.genres=[{
         text: 'Action',
         id: 1
@@ -20,4 +21,19 @@ app.controller('MovieController',['$http',function($http){
         })
         vm.movieToAdd={};
     }
+
+    vm.getMovies = function(){
+        $http.get('/movies').then(function(response){
+            vm.movies=response.data;
+            for(movie of vm.movies){
+                if(movie.image==null){
+                    movie.image='https://www.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg'
+                }
+            }
+            console.log(vm.movies);
+        }).catch(function(error){
+            console.log('Error in GET:',error);
+        })
+    }
+    vm.getMovies();
 }])
