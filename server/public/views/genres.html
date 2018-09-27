@@ -1,3 +1,25 @@
 <h1>Genres Page</h1>
 
 {{vm.message}}
+
+<form ng-submit="vm.addGenre(vm.genreToAdd)">
+    <label>Add a Genre
+        <input type="text" placeholder="E.g., Sci-Fi" ng-model="vm.genreToAdd.name">
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Genre</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="genre in vm.genres">
+            <td>{{genre.name}}</td>
+            <td>{{genre.id}}</td>
+        </tr>
+    </tbody>
+</table>
