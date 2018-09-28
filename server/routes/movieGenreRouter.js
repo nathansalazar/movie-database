@@ -30,14 +30,13 @@ router.get('/',(req,res)=>{
     })
 })
 
-// router.delete('/',(req,res)=>{
-//     console.log('req.query.id is',req.query.id);
-//     pool.query(`DELETE FROM "movies" 
-//     WHERE "id"=$1;`,[req.query.id]).then((results)=>{
-//         res.sendStatus(200);
-//     }).catch((error)=>{
-//         console.log('Error in DELETE:',error);
-//     })
-// })
+router.delete('/',(req,res)=>{
+    console.log('req.query.tmdb_id is',req.query.tmdb_id);
+        //delete from "movies_genres" table
+    pool.query(`DELETE FROM "movies_genres" 
+        WHERE "tmdb_id"=$1;`,[req.query.tmdb_id]).catch((error)=>{
+        console.log('Error in DELETE:',error);
+    })
+})
 
 module.exports = router;

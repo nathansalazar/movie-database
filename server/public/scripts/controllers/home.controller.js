@@ -45,6 +45,12 @@ movieApp.controller('MovieController',['$http',function($http){
         }).catch(function(error){
             console.log('Error in DELETE:',error);
         })
+        //delete from "movies_genres"
+        $http.delete(`/movies_genres`, {params: movie}).then(function(response){
+            console.log('response is:',response);
+        }).catch(function(error){
+            console.log('Error in DELETE:',error);
+        })
     }
     vm.getMovies();
 

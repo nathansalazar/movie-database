@@ -38,9 +38,6 @@ router.delete('/',(req,res)=>{
     }).catch((error)=>{
         console.log('Error in DELETE:',error);
     })
-    //delete from "movies_genres" table
-    pool.query(`DELETE FROM "movies_genres" 
-        WHERE "tmdb_id"=$1;`,[req.query.id]);
 })
 
 module.exports = router;
