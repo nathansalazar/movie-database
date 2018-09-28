@@ -40,7 +40,7 @@ movieApp.controller('MovieController',['$http',function($http){
     vm.getGenreIds = function(){
         $http.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=797ed4d5689b21e1820bd0a7a0a7b994&language=en-US
         `).then(function(response){
-            console.log('Response.data.genres is ',response.data.genres);
+            // console.log('Response.data.genres is ',response.data.genres);
             vm.genres=response.data.genres;
         }).catch(function(error){
             console.log('Error getting genre ids:',error);
