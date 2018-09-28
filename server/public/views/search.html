@@ -14,16 +14,17 @@
             <div>
                 <md-card-title>
                     <md-card-title-text>
-                            {{movie.title}}
+                            <span class="md-headline">{{movie.title}}</span>
+                            <span class="md-subhead">Avg. Rating: {{movie.vote_average*10}}</span>
+                            <span class="md-subhead">Release Date: {{movie.release_date}}</span>
+                            <span class="md-subhead"><img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="width:100px"></span>
                     </md-card-title-text>
                     </mat-card-title>
                     <md-card-content>
                         {{movie.overview}}
                     </md-card-content>
                 </div>
-                    <div>
-                        <img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="width:100px">
-                    </div>
+                    
                     <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.addMovie(movie)">
                             Add to Database
                         </md-button>

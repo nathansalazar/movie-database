@@ -34,6 +34,13 @@ JOIN "movies_genres" ON "movies".tmdb_id="movies_genres".tmdb_id
 JOIN "genres" ON "genres".tmdb_id="movies_genres".genre
 GROUP BY "movies_genres".genre, "genres"."name";
 
+--SQL query to get all movies in a given genre
+SELECT "name", "genres"."tmdb_id", "title", "image" FROM "movies" 
+JOIN "movies_genres" ON "movies".tmdb_id="movies_genres".tmdb_id
+JOIN "genres" ON "genres".tmdb_id="movies_genres".genre
+WHERE "name"='Animation';
+
+
 --create movies_genres junction table, using the api's id for movie and genre
 CREATE TABLE "movies_genres" (
 "tmdb_id" INT NOT NULL,
@@ -72,32 +79,7 @@ VALUES
     (10752,'War'),
 (37,'Western');
 
+--add column to "movies" table for average rating
+ALTER TABLE "movies"
+ADD "rating" INT;
 
-
-
-
-
-
-
-
-
---this is my attempt at inserting JSON into a SQL table, and getting information back
-CREATE TABLE "testJSON" (
-"id" SERIAL PRIMARY KEY,
-"jsonData" JSONB,
-"string" VARCHAR(10)
-);
-
-INSERT INTO "testJSON" ("jsonData", "string")
-VALUES ('{"prop1": "Taco", "prop2": "potato"}', 'firstJSON');
-
-INSERT INTO "testJSON" ("jsonData", "string")
-VALUES ('{"prop1": "soccer", "prop3": "hindenburg", "prop4": 10}', 'secondJSON');
-
-
-INSERT INTO "testJSON" ("jsonData", "string")
-VALUES ('{"prop2": "computer", "prop4": 15, "prop1": true}', 'thirdJSON');
-
-SELECT "jsonData"->>'prop1' AS prop1 FROM "testJSON";
-
-SELECT "jsonData"->>'prop4' AS prop4 FROM "testJSON";
