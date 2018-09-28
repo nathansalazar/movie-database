@@ -21,16 +21,23 @@ INSERT INTO "genre"
 ("name", "api_id")
 VALUES ('Action', 28);
 
+--add a few more columns for the "movies" table
 ALTER TABLE "movies"
 ADD "image" VARCHAR(255);
 
-
+ALTER TABLE "movies"
+ADD "tmdb_id" INT;
 
 --SQL query to get number of movies in each genre
 SELECT "genre"."id", "name", COUNT("genre_id") FROM "movies"
 JOIN "genre" ON "genre"."id"="movies"."genre_id"
 GROUP BY "movies"."genre_id", "name", "genre"."id";
 
+--create movies_genres junction table, using the api's id for movie and genre
+CREATE TABLE "movies_genres" (
+"tmdb_id" INT NOT NULL,
+"genre" INT NOT NULL
+);
 
 
 --this is my attempt at inserting JSON into a SQL table, and getting information back

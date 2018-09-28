@@ -7,10 +7,14 @@ router.use(bodyParser.json());
 
 router.post('/',(req,res)=>{
     console.log('req.body is',req.body);
+    if(req.body.tmdb_id==undefined){
+        req.body.tmdb_id=null;
+    }
     pool.query(`INSERT INTO "movies"
-        ("title", "genre_id", "release_date", "run_time", "image")
-        VALUES ($1, $2, $3, $4, $5);`,
-        [req.body.title, req.body.genre_id, req.body.release_date, req.body.runtime, req.body.image]
+        ("title", "genre_id", "release_date", "run_time", "image", "tmdb_id")
+        VALUES ($1, $2, $3, $4, $5, $6);`,
+        [req.body.title, req.body.genre_id, req.body.release_date, 
+            req.body.runtime, req.body.image, req.body.tmdb_id]
     ).then((results)=>{
         res.send(results.rows);
     }).catch((error)=>{

@@ -10,11 +10,13 @@
     <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre_id">
         <option value="">Genre</option>
     </select>
-    <label>Release Date
+    <!-- <label>Release Date
         <md-input-container>
             <input type="date" value="yyyy-MM-dd" min="1900-01-01" max="2019-01-01" ng-model="vm.movieToAdd.release_date" />
-        </md-input-container></label>
-        <md-date-picker placeholder="Date"></md-date-picker>
+        </md-input-container></label> -->
+
+    <md-datepicker md-placeholder="Release Date" ng-model="vm.movieToAdd.release_date"></md-datepicker>
+
     <!-- this needs to be fixed later -->
     <md-input-container>
         <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
@@ -25,14 +27,17 @@
     <input type="submit" value="Submit">
 </form>
 
-<div class="md-padding" layout="row" layout-wrap>
-    <md-content flex="33">
+<md-content class="md-padding" layout="row" layout-wrap>
+    <div flex="10" layout="row" layout-wrap>
         <md-card style="width:300px" ng-repeat="movie in vm.movies">
             <md-card-title>
                 <md-card-title-text>
                     {{movie.title}}
                 </md-card-title-text>
                 </mat-card-title>
+                <md-card-subtitle>
+                    {{movie.genre_id}}
+                </md-card-subtitle>
                 <div>
                     <img ng-src="{{movie.image}}" style="width:100px">
                 </div>
@@ -40,5 +45,5 @@
                     Delete
                 </md-button>
         </md-card>
-    </md-content>
-</div>
+    </div>
+</md-content>
