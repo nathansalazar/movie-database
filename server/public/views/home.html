@@ -7,7 +7,7 @@
     <md-input-container>
         <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
     </md-input-container>
-    <select ng-options="genre.id as genre.text for genre in vm.genres" ng-model="vm.movieToAdd.genre_id">
+    <select ng-options="genre.id as genre.name for genre in vm.genres" ng-model="vm.movieToAdd.genre_id">
         <option value="">Genre</option>
     </select>
     <!-- <label>Release Date
@@ -26,6 +26,9 @@
     </md-input-container>
     <input type="submit" value="Submit">
 </form>
+
+
+
 
 <md-content class="md-padding" layout="row" layout-wrap>
     <div flex="10" layout="row" layout-wrap>
