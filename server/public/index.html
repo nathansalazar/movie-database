@@ -20,16 +20,25 @@
     <title>Movie Database</title>
 </head>
 <!-- ng-controller="MovieController as vm" -->
-<body ng-app="MovieApp" >
-    
+
+<body ng-app="MovieApp">
+<!-- 
     <div>
-            <a href="#!/">Home</a>
+        <a href="#!/">Home</a>
         <a href="#!/search">Search</a>
         <a href="#!/genres">Genres</a>
-    </div>
+    </div> -->
+
+    <md-content>
+        <md-nav-bar>
+            <md-nav-item md-nav-href="#!/">Home</md-nav-item>
+            <md-nav-item md-nav-href="#!/search">Search</md-nav-item>
+            <md-nav-item md-nav-href="#!/genres">Genres</md-nav-item>
+        </md-nav-bar>
+    </md-content>
 
     <ng-view></ng-view>
-<!-- 
+    <!-- 
     <div>
             <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
                     <md-card-title>

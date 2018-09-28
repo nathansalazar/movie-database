@@ -23,6 +23,7 @@ movieApp.controller('genreController',['$http',function($http){
     }
 
     vm.seeAllInGenre = function(genre){
+        console.log('Show all movies in the '+ genre.name + ' genre.');
         //maybe do separate router 
     }
     vm.getGenres();
