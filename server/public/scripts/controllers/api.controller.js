@@ -21,7 +21,7 @@ movieApp.controller('apiController',['$http',function($http){
         for(i=0;i<movie.genre_ids.length;i++){
             let movieObject = {
                 tmdb_id: movie.tmdb_id,
-                genre: movie.genre_ids[i]
+                genre_id: movie.genre_ids[i]
             }
             $http.post('/movies_genres',movieObject).then(function(response){
                 console.log('Movie and its genres added');

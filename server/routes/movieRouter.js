@@ -7,9 +7,6 @@ router.use(bodyParser.json());
 
 router.post('/',(req,res)=>{
     // console.log('req.body is',req.body);
-    if(req.body.tmdb_id==undefined){
-        req.body.tmdb_id=null;
-    }
     if(req.body.vote_average==undefined){
         req.body.vote_average=null;
     }
@@ -35,13 +32,15 @@ router.get('/',(req,res)=>{
 })
 
 router.delete('/',(req,res)=>{
-    console.log('req.query.id is',req.query.id);
     pool.query(`DELETE FROM "movies" 
     WHERE "id"=$1;`,[req.query.id]).then((results)=>{
         res.sendStatus(200);
     }).catch((error)=>{
         console.log('Error in DELETE:',error);
     })
+    //delete from "movies_genres" table
+    pool.query(`DELETE FROM "movies_genres" 
+        WHERE "tmdb_id"=$1;`,[req.query.id]);
 })
 
 module.exports = router;

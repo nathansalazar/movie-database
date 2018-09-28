@@ -15,3 +15,4 @@ movieApp.config(['$routeProvider',function($routeProvider){
     })
 }])
 
+let largestID = 0;

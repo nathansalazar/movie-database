@@ -39,7 +39,7 @@
 
 
 
-<div class="md-padding" layout="row" layout-wrap>
+<!-- <div class="md-padding" layout="row" layout-wrap>
         <md-content>
             <md-card style="width:600px" ng-repeat="movie in vm.searchResults">
             <div layout="column">
@@ -48,17 +48,36 @@
                             {{movie.title}}
                     </md-card-title-text>
                     </mat-card-title>
-                    <!-- <md-card-content>
+                   <md-card-content>
                         The main genre is {{movie.tmdb_id}}
-                    </md-card-content> -->
+                    </md-card-content> 
                 </div>
                     <div>
                         <img ng-src="{{movie.poster_path}}" style="width:100px">
                     </div>
             </md-card>
         </md-content>
-    </div>
+    </div>  -->
 
+    <div layout="row" layout-wrap>
+            <md-content flex="33" ng-repeat="movie in vm.searchResults">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{movie.title}}</span>
+                            <span class="md-subhead">Runtime: {{movie.run_time}}</span>
+                            <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
+                        </md-card-title-text>
+                        </mat-card-title>
+                        <div>
+                            <img ng-src="{{movie.poster_path}}" style="width:100px">
+                        </div>
+                        <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
+                            Delete
+                        </md-button>
+                </md-card>
+            </md-content>
+        </div>
 
 
 

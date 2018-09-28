@@ -4,10 +4,19 @@ movieApp.controller('MovieController',['$http',function($http){
     vm.movies=[];
     vm.addMovie = function(movieToAdd){
         console.log(movieToAdd);
+        //set tmdb_id to the negative of its SQL id
+        movieToAdd.tmdb_id = -(largestID+1);
         $http.post('/movies',movieToAdd).then(function(response){
+            console.log('POST response is',response.data);
             vm.getMovies();
         }).catch(function(error){
             console.log('Error in POST:', error);
+        })
+        //also insert the movie into the "movies_genres" table
+        $http.post('/movies_genres',movieToAdd).then(function(response){
+            console.log('Movie and its genres added');
+        }).catch(function(error){
+            console.log('Error in movies_genres POST:',error);
         })
         vm.movieToAdd={};
     }
@@ -17,10 +26,12 @@ movieApp.controller('MovieController',['$http',function($http){
             vm.movies=response.data;
             for(movie of vm.movies){
                 if(movie.image==null){
+                    //if no image given, use a default image
                     movie.image='https://www.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg'
                 }
             }
-            // console.log('The movies in the db are:',vm.movies);
+            largestID=vm.movies[vm.movies.length-1].id;
+            console.log('The largest ID is', largestID);
         }).catch(function(error){
             console.log('Error in GET:',error);
         })
@@ -47,4 +58,5 @@ movieApp.controller('MovieController',['$http',function($http){
         })
     }
     vm.getGenreIds();
+
 }])
