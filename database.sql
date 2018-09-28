@@ -29,9 +29,10 @@ ALTER TABLE "movies"
 ADD "tmdb_id" INT;
 
 --SQL query to get number of movies in each genre
-SELECT "genre"."id", "name", COUNT("genre_id") FROM "movies"
-JOIN "genre" ON "genre"."id"="movies"."genre_id"
-GROUP BY "movies"."genre_id", "name", "genre"."id";
+SELECT "name", COUNT("movies_genres".genre) FROM "movies" 
+JOIN "movies_genres" ON "movies".tmdb_id="movies_genres".tmdb_id
+JOIN "genres" ON "genres".tmdb_id="movies_genres".genre
+GROUP BY "movies_genres".genre, "genres"."name";
 
 --create movies_genres junction table, using the api's id for movie and genre
 CREATE TABLE "movies_genres" (

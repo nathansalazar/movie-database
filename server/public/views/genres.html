@@ -34,3 +34,32 @@
         </tr>
     </tbody>
 </table>
+
+
+
+
+
+<div class="md-padding" layout="row" layout-wrap>
+        <md-content>
+            <md-card style="width:600px" ng-repeat="movie in vm.searchResults">
+            <div layout="column">
+                <md-card-title>
+                    <md-card-title-text>
+                            {{movie.title}}
+                    </md-card-title-text>
+                    </mat-card-title>
+                    <!-- <md-card-content>
+                        The main genre is {{movie.tmdb_id}}
+                    </md-card-content> -->
+                </div>
+                    <div>
+                        <img ng-src="{{movie.poster_path}}" style="width:100px">
+                    </div>
+            </md-card>
+        </md-content>
+    </div>
+
+
+
+
+

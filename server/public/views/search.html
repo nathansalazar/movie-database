@@ -9,9 +9,9 @@
 </form>
 
 <div class="md-padding" layout="row" layout-wrap>
-        <md-content>
-            <md-card style="width:600px" ng-repeat="movie in vm.searchResults">
-            <div layout="column">
+        <md-content  flex="33" ng-repeat="movie in vm.searchResults">
+            <md-card>
+            <div>
                 <md-card-title>
                     <md-card-title-text>
                             {{movie.title}}
