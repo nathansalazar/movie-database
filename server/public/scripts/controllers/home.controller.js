@@ -39,13 +39,14 @@ movieApp.controller('MovieController',['$http',function($http){
 
     vm.deleteMovie = function(movie){
         console.log('We shall delete',movie.title);
+        //delete movie from "movies" table
         $http.delete('/movies', {params: movie}).then(function(response){
             console.log('response is:',response);
             vm.getMovies();
         }).catch(function(error){
             console.log('Error in DELETE:',error);
         })
-        //delete from "movies_genres"
+        //delete from "movies_genres" table
         $http.delete(`/movies_genres`, {params: movie}).then(function(response){
             console.log('response is:',response);
         }).catch(function(error){

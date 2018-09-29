@@ -1,4 +1,4 @@
-movieApp.controller('apiController',['$http',function($http){
+movieApp.controller('apiController',['$http','$mdToast',function($http,$mdToast){
     let vm = this;
     vm.message='apiController is working.';
     vm.searchResults=[];
@@ -39,7 +39,8 @@ movieApp.controller('apiController',['$http',function($http){
         ).then(function(response){
             movie.runtime = response.data.runtime;
             $http.post('/movies',movie).then(function(response){
-                alert('Success! '+movie.title+' was added! Check the home page to see it.');
+                // alert('Success! '+movie.title+' was added! Check the home page to see it.');
+                vm.noErrorToast(movie);
             }).catch(function(error){
                 console.log('Error in POST:', error);
             })
@@ -47,5 +48,8 @@ movieApp.controller('apiController',['$http',function($http){
             console.log('Error in API search:',error);
         });
         
+    }
+    vm.noErrorToast = function(movie){
+        $mdToast.show($mdToast.simple().textContent(movie.title+' was added.'));
     }
 }])

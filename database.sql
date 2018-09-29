@@ -83,3 +83,5 @@ VALUES
 ALTER TABLE "movies"
 ADD "rating" INT;
 
+--remove condition that "release_date" is required
+ALTER TABLE "movies" ALTER COLUMN "release_date" DROP NOT NULL;
