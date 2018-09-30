@@ -59,7 +59,7 @@
         </md-content>
     </div>  -->
 
-    <div layout="row" layout-wrap>
+    <!-- <div layout="row" layout-wrap>
             <md-content flex="33" ng-repeat="movie in vm.searchResults">
                 <md-card>
                     <md-card-title>
@@ -77,8 +77,44 @@
                         </md-button>
                 </md-card>
             </md-content>
-        </div>
+        </div> -->
 
 
+        <div layout="row" layout-wrap>
+                <md-card ng-repeat="movie in vm.searchResults" flex="30">
+                    <md-card-title>
+                        <md-card-title-text layout-align="center center">
+                            <span class="md-headline">{{movie.title}}</span>
+                            <!-- <span class="md-subhead">{{movie.genre}}</span> -->
+                            <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
+                            <span class="md-subhead">Run Time: {{movie.run_time}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                            <div class="md-media-xl card-media">
+                                <img style="width: 200px;" ng-src="{{movie.image}}">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <md-card-actions layout="row" layout-align="center center">
+                                <md-button id="thumbDown" ng-click="toggleDown = !toggleDown" class="md-icon-button" aria-label="Favorite">
+                                    <md-icon ng-class="{'red':toggleDown}">thumb_down_alt</md-icon>
+                                </md-button>
+                                <md-button ng-click="toggleUp = !toggleUp" class="md-icon-button" aria-label="Settings">
+                                    <md-icon ng-class="{'green':toggleUp}">thumb_up_alt</md-icon>
+                                </md-button>
+                                <md-button ng-click="vm.addToFavorites(movie); toggleFave = !toggleFave" class="md-icon-button" aria-label="Share">
+                                    <md-icon ng-class="{'pink': toggleFave}">favorite</md-icon>
+                                </md-button>
+                                <md-button ng-click="vm.deleteMovie(movie)" class="md-icon-button" aria-label="Share">
+                                    <md-icon>delete</md-icon>
+                                </md-button>
+                            </md-card-actions>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
 
 

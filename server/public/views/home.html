@@ -76,6 +76,7 @@
                 <!-- <span class="md-subhead">{{movie.genre}}</span> -->
                 <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
                 <span class="md-subhead">Run Time: {{movie.run_time}}</span>
+                <span class="md-subhead" ng-show="movie.rating">Rating: {{movie.rating}}</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
