@@ -40,4 +40,14 @@ router.delete('/',(req,res)=>{
     })
 })
 
+router.put('/',(req,res)=>{
+    pool.query(`UPDATE "movies"
+    SET "user_rating"=$1
+    WHERE "tmdb_id"=$2;`,[req.body.user_rating,req.body.tmdb_id]).then((results)=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('Error in UPDATE:',error);
+    })
+})
+
 module.exports = router;

@@ -1,107 +1,88 @@
-<h1>Home Page</h1>
 
-<h1>Movie Database</h1>
+    <h1>Your Movie Collection</h1>
 
-<h3>Add a Movie!</h3>
+    <h3>Want to add a movie?</h3>
 
-<div>
-    <div style="text-align: center">
-        <a href="#!/search"><md-button class="md-raised md-primary">Search the API!</md-button></a>
+    <div>
+        <div style="text-align: center">
+            <a href="#!/search"><md-button class="md-raised md-primary">Search the API!</md-button></a>
+        </div>
+        <div style="text-align: center">
+            <md-button class="md-primary" style="color:lightgrey" ng-click="vm.showForm=true">Or you could enter in the information
+                yourself. I guess.</md-button>
+        </div>
     </div>
-    <div style="text-align: center">
-        <md-button class="md-primary" style="color:lightgrey" ng-click="vm.showForm=true">Or you could enter in the information
-            yourself. I guess.</md-button>
-    </div>
-</div>
 
-<form ng-submit="vm.addMovie(vm.movieToAdd)" ng-show="vm.showForm">
+    <form ng-submit="vm.addMovie(vm.movieToAdd)" ng-show="vm.showForm">
 
-    <md-input-container>
-        <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
-    </md-input-container>
-    <select ng-options="genre.id as genre.name for genre in vm.genres" ng-model="vm.movieToAdd.genre_id">
-        <option value="">Genre</option>
-    </select>
-    <!-- <label>Release Date
+        <md-input-container>
+            <input type="text" placeholder="Title" ng-model="vm.movieToAdd.title">
+        </md-input-container>
+        <select ng-options="genre.id as genre.name for genre in vm.genres" ng-model="vm.movieToAdd.genre_id">
+            <option value="">Genre</option>
+        </select>
+        <!-- <label>Release Date
         <md-input-container>
             <input type="date" value="yyyy-MM-dd" min="1900-01-01" max="2019-01-01" ng-model="vm.movieToAdd.release_date" />
         </md-input-container></label> -->
 
-    <md-datepicker md-placeholder="Release Date" ng-model="vm.movieToAdd.release_date"></md-datepicker>
+        <md-datepicker md-placeholder="Release Date" ng-model="vm.movieToAdd.release_date"></md-datepicker>
 
-    <!-- this needs to be fixed later -->
-    <md-input-container>
-        <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
-    </md-input-container>
-    <md-input-container>
-        <input type="text" placeholder="Image URL" ng-model="vm.movieToAdd.image">
-    </md-input-container>
-    <input type="submit" value="Submit">
-</form>
+        <!-- this needs to be fixed later -->
+        <md-input-container>
+            <input type="number" placeholder="Runtime in minutes" ng-model="vm.movieToAdd.runtime">
+        </md-input-container>
+        <md-input-container>
+            <input type="text" placeholder="Image URL" ng-model="vm.movieToAdd.image">
+        </md-input-container>
+        <input type="submit" value="Submit">
+    </form>
 
 
-<br>
-<h3>Movies currently in the Database</h3>
+    <br>
+    <h3>Movies currently in the Database</h3>
 
-<!-- <div layout="row" layout-wrap>
-    <md-content flex="33" ng-repeat="movie in vm.movies">
-        <md-card>
+
+    <div layout="row" layout-wrap>
+        <md-card ng-repeat="movie in vm.movies" flex="30">
             <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{movie.title}}</span>
-                    <span class="md-subhead">Runtime: {{movie.run_time}}</span>
-                    <span class="md-subhead" ng-show="movie.release_date">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
-                    <span class="md-subhead" ng-show="movie.rating">Rating: {{movie.rating}}</span>
+                <md-card-title-text layout-align="center center">
+                    <span class="md-headline" flex="80">{{movie.title}}</span>
+                    <!-- <span class="md-subhead">{{movie.genre}}</span> -->
+                    <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
+                    <span class="md-subhead">Run Time: {{movie.run_time}} min.</span>
+                    <span class="md-subhead" ng-show="movie.rating && !movie.user_rating">Rating: {{movie.rating}}</span>
+                    <span class="md-subhead" ng-show="movie.user_rating">Your Rating: {{movie.user_rating}}</span>
                 </md-card-title-text>
-                </mat-card-title>
-                <div>
-                    <img ng-src="{{movie.image}}" style="width:100px">
-                </div>
-                <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.deleteMovie(movie)">
-                    Delete
-                </md-button>
-        </md-card>
-    </md-content>
-</div> -->
-
-
-
-<!-- code from Reese -->
-
-<div layout="row" layout-wrap>
-    <md-card ng-repeat="movie in vm.movies" flex="30">
-        <md-card-title>
-            <md-card-title-text layout-align="center center">
-                <span class="md-headline">{{movie.title}}</span>
-                <!-- <span class="md-subhead">{{movie.genre}}</span> -->
-                <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
-                <span class="md-subhead">Run Time: {{movie.run_time}}</span>
-                <span class="md-subhead" ng-show="movie.rating">Rating: {{movie.rating}}</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
+            </md-card-title>
+            <md-card-content layout="column" layout-align="center center">
                 <div class="md-media-xl card-media">
-                    <img style="width: 200px;" ng-src="{{movie.image}}">
-            </div>
-            <br>
-            <br>
-            <br>
-            <div>
-                <md-card-actions layout="row" layout-align="center center">
-                    <md-button id="thumbDown" ng-click="toggleDown = !toggleDown" class="md-icon-button" aria-label="Favorite">
-                        <md-icon ng-class="{'red':toggleDown}">thumb_down_alt</md-icon>
-                    </md-button>
-                    <md-button ng-click="toggleUp = !toggleUp" class="md-icon-button" aria-label="Settings">
-                        <md-icon ng-class="{'green':toggleUp}">thumb_up_alt</md-icon>
-                    </md-button>
-                    <md-button ng-click="vm.addToFavorites(movie); toggleFave = !toggleFave" class="md-icon-button" aria-label="Share">
-                        <md-icon ng-class="{'pink': toggleFave}">favorite</md-icon>
-                    </md-button>
-                    <md-button ng-click="vm.deleteMovie(movie)" class="md-icon-button" aria-label="Share">
-                        <md-icon>delete</md-icon>
-                    </md-button>
-                </md-card-actions>
-            </div>
-        </md-card-content>
-    </md-card>
-</div>
+                    <img style="width: 80%;" ng-src="{{movie.image}}">
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <md-card-actions layout="row" layout-align="center center">
+                        <md-button class="md-primary md-raised" aria-label="Favorite" ng-hide="movie.buttonClicked || movie.rating" ng-click="movie.buttonClicked=true">
+                            Rate this Movie
+                        </md-button>
+                        <form ng-submit="vm.rateMovie(movie)" ng-show="movie.buttonClicked">
+                            <md-input-container>
+                                <input type="number" placeholder="1-100" ng-model="movie.user_rating">
+                            </md-input-container>
+                            <input type="submit" value="Submit" ng-click="movie.buttonClicked=false">
+                        </form>
+                        <md-button ng-click="vm.deleteMovie(movie)" class="md-icon-button" aria-label="Share">
+                            <md-icon>delete</md-icon>
+                        </md-button>
+                    </md-card-actions>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+
+
+
+

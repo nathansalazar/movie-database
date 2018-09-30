@@ -85,3 +85,12 @@ ADD "rating" INT;
 
 --remove condition that "release_date" is required
 ALTER TABLE "movies" ALTER COLUMN "release_date" DROP NOT NULL;
+
+
+--add user_rating column to "movies" table and insert data 
+ALTER TABLE "movies"
+ADD "user_rating" INT;
+
+UPDATE "movies"
+SET "user_rating"=87
+WHERE "tmdb_id"=105;

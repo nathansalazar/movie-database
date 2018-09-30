@@ -66,4 +66,13 @@ movieApp.controller('MovieController',['$http',function($http){
     }
     vm.getGenreIds();
 
+    vm.rateMovie = function(movie){
+        $http.put('/movies',movie).then(function(response){
+            console.log('Successfully updated '+ movie.title+ '?');
+        }).catch(function(error){
+            console.log('Error in update:',error);
+        })
+        movie.buttonClicked=false;
+    }
+
 }])

@@ -1,34 +1,67 @@
 <h1>Search Using The Movie Database API</h1>
 
 
-
 <form ng-submit="vm.searchForMovie(vm.search)">
     <input type="text" placeholder="Title" ng-model="vm.search.title">
     <input type="submit" value="Search">
 </form>
 
-<div class="md-padding" layout="row" layout-wrap>
-        <md-content  flex="33" ng-repeat="movie in vm.searchResults">
+
+<div style="height:10000px;">
+
+    <!-- <div class="md-padding" layout="row" layout-wrap>
+        <md-content flex="33" ng-repeat="movie in vm.searchResults">
             <md-card>
-            <div>
-                <md-card-title>
-                    <md-card-title-text>
+                <div>
+                    <md-card-title>
+                        <md-card-title-text>
                             <span class="md-headline">{{movie.title}}</span>
                             <span class="md-subhead">Avg. Rating: {{movie.vote_average*10}}</span>
                             <span class="md-subhead">Release Date: {{movie.release_date}}</span>
                             <span class="md-subhead"><img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="width:100px"></span>
-                    </md-card-title-text>
-                    </mat-card-title>
-                    <md-card-content>
-                        {{movie.overview}}
-                    </md-card-content>
+                        </md-card-title-text>
+                        </mat-card-title>
+                        <md-card-content>
+                            {{movie.overview}}
+                        </md-card-content>
                 </div>
-                    
-                    <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.addMovie(movie)">
-                            Add to Database
-                        </md-button>
+
+                <md-button class="md-primary md-raised" style="height:50px" ng-click="vm.addMovie(movie)">
+                    Add to Database
+                </md-button>
             </md-card>
         </md-content>
+    </div> -->
+
+
+
+    <div layout="row" layout-wrap>
+        <md-card ng-repeat="movie in vm.searchResults" flex="30">
+            <div layout="row">
+                <md-card-title flex="40">
+                    <md-card-title-text>
+                        <span class="md-headline" flex="80">{{movie.title}}</span>
+                        <!-- <span class="md-subhead">{{movie.genre}}</span> -->
+                        <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
+                        <span class="md-subhead">Rating: {{movie.vote_average*10}}</span>
+                        <span class="card-media">
+                            <img style="width:100%" ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+                        </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content style="height:400px; font-size: 0.8em" flex="60" layout="column">
+                    <br>
+                    <br>
+                    {{movie.overview}}
+                    <br>
+                    <md-card-actions layout-align="end center">
+                            <md-button class="md-button-primary md-raised" aria-label="Share" ng-click="vm.addMovie(movie)">
+                                Add to Collection
+                            </md-button>
+                        </md-card-actions>
+                </md-card-content>
+            </div>
+        </md-card>
     </div>
 
-    
+</div>
