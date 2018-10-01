@@ -8,8 +8,8 @@
             <a href="#!/search"><md-button class="md-raised md-primary">Search the API!</md-button></a>
         </div>
         <div style="text-align: center">
-            <md-button class="md-primary" style="color:lightgrey" ng-click="vm.showForm=true">Or you could enter in the information
-                yourself. I guess.</md-button>
+            <md-button class="md-primary" style="color:lightgrey" ng-click="vm.showForm=true">Or you can enter in the information
+                yourself</md-button>
         </div>
     </div>
 
@@ -40,31 +40,35 @@
 
 
     <br>
-    <h3>Movies currently in the Database</h3>
+    <h3 style="color:whitesmoke">Movies currently in the Database</h3>
 
 
     <div layout="row" layout-wrap>
-        <md-card ng-repeat="movie in vm.movies" flex="30">
+        <md-card ng-repeat="movie in vm.movies | orderBy : id" flex="30">
             <md-card-title>
                 <md-card-title-text layout-align="center center">
                     <span class="md-headline" flex="80">{{movie.title}}</span>
                     <!-- <span class="md-subhead">{{movie.genre}}</span> -->
                     <span class="md-subhead">Release Date: {{movie.release_date | date:"MM/dd/yyyy"}}</span>
                     <span class="md-subhead">Run Time: {{movie.run_time}} min.</span>
-                    <span class="md-subhead" ng-show="movie.rating && !movie.user_rating">Rating: {{movie.rating}}</span>
+                    <span class="md-subhead" ng-show="movie.rating">Avg. Rating: {{movie.rating}}</span>
                     <span class="md-subhead" ng-show="movie.user_rating">Your Rating: {{movie.user_rating}}</span>
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="column" layout-align="center center">
                 <div class="md-media-xl card-media">
-                    <img style="width: 80%;" ng-src="{{movie.image}}">
+                    <img style="width: 100%;" ng-src="{{movie.image}}">
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
                 <br>
                 <br>
                 <br>
                 <div>
                     <md-card-actions layout="row" layout-align="center center">
-                        <md-button class="md-primary md-raised" aria-label="Favorite" ng-hide="movie.buttonClicked || movie.rating" ng-click="movie.buttonClicked=true">
+                        <md-button class="md-primary md-raised" aria-label="Favorite" ng-hide="movie.buttonClicked || movie.user_rating" ng-click="movie.buttonClicked=true">
                             Rate this Movie
                         </md-button>
                         <form ng-submit="vm.rateMovie(movie)" ng-show="movie.buttonClicked">

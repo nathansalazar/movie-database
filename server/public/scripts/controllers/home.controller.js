@@ -24,6 +24,9 @@ movieApp.controller('MovieController',['$http',function($http){
     vm.getMovies = function(){
         $http.get('/movies').then(function(response){
             vm.movies=response.data;
+            vm.movies.sort(function(a,b){
+                return a.id-b.id; //ensures movies are displayed in the order they were put in
+            });
             for(movie of vm.movies){
                 if(movie.image==null){
                     //if no image given, use a default image
